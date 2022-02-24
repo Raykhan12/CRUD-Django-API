@@ -19,7 +19,7 @@ def createuser(request):
         serializer.save()
 
         return Response(serializer.data)
-    return Response({"error":"error"})        
+    return Response(serializer.errors)        
 
 @api_view(['POST'])
 def updateUser(request,pk):
@@ -29,7 +29,7 @@ def updateUser(request,pk):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data) 
-    return Response({"error":"error"})        
+    return Response(serializer.errors)        
 
 @api_view(['DELETE'])
 def deleteUser(request,pk):
